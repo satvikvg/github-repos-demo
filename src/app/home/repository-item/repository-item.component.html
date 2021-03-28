@@ -1,0 +1,11 @@
+<mat-list-item *ngIf="repo">
+  <img mat-list-avatar [src]="repo?.owner?.avatar_url" />
+  <span mat-line>{{ repo?.full_name }}</span>
+  <span mat-line>{{ repo?.description }}</span>
+  <span mat-line
+    ><strong>Stars: {{ repo?.stargazers_count }}</strong
+    >&nbsp;<strong>Issues: {{ repo?.open_issues_count }}</strong> Submitted
+    {{ repo.created_at }} by {{ repo?.owner?.login }}</span
+  >
+</mat-list-item>
+<mat-divider></mat-divider>
