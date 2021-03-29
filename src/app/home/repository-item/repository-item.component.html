@@ -8,5 +8,6 @@
     {{ repo ? (repo.created_at | dateAgo) : "" }} by
     {{ repo?.owner?.login }}</span
   >
+  <p *ngIf="repo?.starRating">Rating: {{ repo?.starRating }}</p>
 </mat-list-item>
 <mat-divider></mat-divider>

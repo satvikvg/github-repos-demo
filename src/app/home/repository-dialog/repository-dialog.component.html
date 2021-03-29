@@ -1,13 +1,57 @@
-<h2 mat-dialog-title>{{ data.full_name }}</h2>
+<div class="dialog-header">
+  <img mat-card-avatar [src]="data.owner.avatar_url" />
+  <h2 mat-dialog-title>{{ data.full_name }}</h2>
+</div>
+
 <mat-dialog-content class="mat-typography">
+  <!-- Description -->
   <div>{{ data.description }}</div>
   <div>
     <strong>Stars: {{ data?.stargazers_count }}</strong
     >&nbsp;<strong>Issues: {{ data?.open_issues_count }}</strong> Submitted
     {{ data ? (data.created_at | dateAgo) : "" }} by {{ data?.owner?.login }}
   </div>
+
+  <!-- Star Rating -->
+  <div class="rating-block">
+    <h3>Rating: {{ group.value }}</h3>
+    <mat-button-toggle-group
+      name="ratings"
+      aria-label="Ratings"
+      [value]="data.starRating"
+      #group="matButtonToggleGroup"
+    >
+      <mat-button-toggle value="1"
+        ><mat-icon>{{
+          group.value >= 1 ? "star" : "star_outlined"
+        }}</mat-icon></mat-button-toggle
+      >
+      <mat-button-toggle value="2"
+        ><mat-icon>{{
+          group.value >= 2 ? "star" : "star_outlined"
+        }}</mat-icon></mat-button-toggle
+      >
+      <mat-button-toggle value="3"
+        ><mat-icon>{{
+          group.value >= 3 ? "star" : "star_outlined"
+        }}</mat-icon></mat-button-toggle
+      >
+      <mat-button-toggle value="4"
+        ><mat-icon>{{
+          group.value >= 4 ? "star" : "star_outlined"
+        }}</mat-icon></mat-button-toggle
+      >
+      <mat-button-toggle value="5"
+        ><mat-icon>{{
+          group.value >= 5 ? "star" : "star_outlined"
+        }}</mat-icon></mat-button-toggle
+      >
+    </mat-button-toggle-group>
+  </div>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Rate</button>
+  <button mat-button [mat-dialog-close]="group.value" cdkFocusInitial>
+    Rate
+  </button>
 </mat-dialog-actions>

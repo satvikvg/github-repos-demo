@@ -47,6 +47,17 @@ export class HomeComponent implements OnInit {
       data: repository,
     });
 
-    dialogRef.afterClosed().subscribe((result) => {});
+    dialogRef.afterClosed().subscribe((result) => {
+      if (!result) return;
+
+      const index = this.repositories?.items.findIndex(
+        (item) => item.id === repository.id
+      );
+
+      if (this.repositories && index !== undefined) {
+        const item = this.repositories.items[index];
+        this.repositories.items[index] = { ...item, starRating: result };
+      }
+    });
   }
 }
