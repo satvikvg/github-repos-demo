@@ -1,6 +1,22 @@
 # GitReposDemo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.6.
+## This project uses folowing libraries
+
+- Angular Material -> Component Library containing elements like Buttons, Cards, Dialogs etc.
+- ngx-infinite-scroll -> This library is used to achieve Infinite scroll (Pagination).
+
+## App Structure is as follows
+
+- app
+
+  - core
+    \*Contains all nuilding block elements like Modules, Services, Pipes ets required for App to run.
+
+  - home
+    \*This module represents the main home page.
+
+  - layout
+    \*This module contains all structural components.
 
 ## Development server
 
