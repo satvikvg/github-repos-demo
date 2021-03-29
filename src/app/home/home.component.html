@@ -1,6 +1,12 @@
 <mat-card>
   <mat-card-content>
-    <mat-action-list>
+    <mat-action-list
+      infinite-scroll
+      [infiniteScrollDistance]="scrollDistance"
+      [infiniteScrollUpDistance]="scrollUpDistance"
+      [infiniteScrollThrottle]="throttle"
+      (scrolled)="onScrollDown($event)"
+    >
       <app-repository-item
         *ngFor="let repo of repositories?.items"
         [repo]="repo"
