@@ -10,6 +10,7 @@
       <app-repository-item
         *ngFor="let repo of repositories?.items"
         [repo]="repo"
+        (repoClick)="openDialog($event)"
       ></app-repository-item>
     </mat-action-list>
   </mat-card-content>

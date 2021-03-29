@@ -3,6 +3,8 @@ import {
   OnInit,
   ChangeDetectionStrategy,
   Input,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 import { Repository } from '../interfaces/repo-Interfaces';
 
@@ -14,6 +16,7 @@ import { Repository } from '../interfaces/repo-Interfaces';
 })
 export class RepositoryItemComponent implements OnInit {
   @Input() repo?: Repository;
+  @Output() repoClick: EventEmitter<Repository> = new EventEmitter();
 
   constructor() {}
 

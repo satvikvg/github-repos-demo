@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RepositoryResponse } from './interfaces/repo-Interfaces';
+import { MatDialog } from '@angular/material/dialog';
+import { Repository, RepositoryResponse } from './interfaces/repo-Interfaces';
+import { RepositoryDialogComponent } from './repository-dialog/repository-dialog.component';
 import { RepositoryService } from './services/repository.service';
 
 @Component({
@@ -17,7 +19,10 @@ export class HomeComponent implements OnInit {
 
   repositories?: RepositoryResponse;
 
-  constructor(private _repoService: RepositoryService) {}
+  constructor(
+    private _repoService: RepositoryService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this._repoService
@@ -34,5 +39,14 @@ export class HomeComponent implements OnInit {
       .subscribe((response) =>
         this.repositories?.items.push(...response.items)
       );
+  }
+
+  openDialog(repository: Repository): void {
+    const dialogRef = this.dialog.open(RepositoryDialogComponent, {
+      width: '60%',
+      data: repository,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {});
   }
 }
