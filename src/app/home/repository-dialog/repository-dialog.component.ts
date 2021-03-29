@@ -9,7 +9,7 @@ import { Repository } from '../interfaces/repo-Interfaces';
 export class RepositoryDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<RepositoryDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Repository
+    @Inject(MAT_DIALOG_DATA) public data: Repository | any
   ) {}
 
   ngOnInit(): void {}
